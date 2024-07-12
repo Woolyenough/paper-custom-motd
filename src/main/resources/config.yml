@@ -1,0 +1,13 @@
+# Uses Adventure's MiniMessage: https://docs.advntr.dev/minimessage/format.html
+motd:
+  line1: "First line"
+  line2: "Second line"
+
+# Uses legacy colour codes (e.g., §a, §1)
+enable_hover_message: true
+player_hover_message:
+  - "First line"
+  - "Second line"
+
+# Set -1 to leave unchanged
+max_players: 50

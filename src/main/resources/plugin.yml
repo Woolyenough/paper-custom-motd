@@ -1,0 +1,16 @@
+name: WoolyCustomServerListHover
+version: '${version}'
+main: wtf.wooly.custommotd.CustomMotd
+api-version: '1.20'
+authors: [Woolyenough]
+website: https://modrinth.com/project/custom-motd
+
+commands:
+  motdreload:
+    description: Reloads config and icon
+    permission: custommotd.admin
+  maxplayers:
+    aliases:
+      - setmaxplayers
+    description: Manually set max player limit for the server
+    permission: custommotd.admin
