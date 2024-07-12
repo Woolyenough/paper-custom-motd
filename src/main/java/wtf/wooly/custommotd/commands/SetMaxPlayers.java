@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 
 public class SetMaxPlayers implements CommandExecutor {
-    private CustomMotd plugin;
+    private final CustomMotd plugin;
 
     public SetMaxPlayers(CustomMotd plugin) {
         this.plugin = plugin;

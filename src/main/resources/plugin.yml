@@ -1,4 +1,4 @@
-name: WoolyCustomServerListHover
+name: CustomMotd
 version: '${version}'
 main: wtf.wooly.custommotd.CustomMotd
 api-version: '1.20'

@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 
 public class Reload implements CommandExecutor {
-    private CustomMotd plugin;
+    private final CustomMotd plugin;
 
     public Reload(CustomMotd plugin) {
         this.plugin = plugin;
@@ -18,9 +18,7 @@ public class Reload implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (sender.hasPermission(CustomMotd.perms)) {
-            this.plugin.getServer().getScheduler().runTask(this.plugin, () -> {
-                this.plugin.reloadAll();
-            });
+            this.plugin.getServer().getScheduler().runTask(this.plugin, this.plugin::reloadAll);
             sender.sendMessage("Reloaded config.");
         }
         return true;

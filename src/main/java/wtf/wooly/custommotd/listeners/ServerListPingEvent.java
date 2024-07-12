@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class ServerListPingEvent implements Listener {
-    private CustomMotd plugin;
+    private final CustomMotd plugin;
 
     public ServerListPingEvent(CustomMotd plugin) {
         this.plugin = plugin;
@@ -21,7 +21,7 @@ public class ServerListPingEvent implements Listener {
     public void onServerListPing(PaperServerListPingEvent event) {
         String line1 = this.plugin.getConfig().getString("motd.line1");
         String line2 = this.plugin.getConfig().getString("motd.line2");
-        event.motd(MiniMessage.miniMessage().deserialize(line1 + "\n" + line2));
+        event.motd(MiniMessage.miniMessage().deserialize(line1 + "<reset>\n" + line2));
 
         event.setServerIcon(this.plugin.icon);
 
