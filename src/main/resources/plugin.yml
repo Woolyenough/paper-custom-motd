@@ -6,11 +6,11 @@ authors: [Woolyenough]
 website: https://modrinth.com/project/custom-motd
 
 commands:
-  motdreload:
+  motd-reload:
     description: Reloads config and icon
     permission: custommotd.admin
-  maxplayers:
+  max-players:
     aliases:
-      - setmaxplayers
+      - set-max-players
     description: Manually set max player limit for the server
     permission: custommotd.admin

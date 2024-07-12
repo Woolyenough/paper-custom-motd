@@ -26,8 +26,8 @@ public final class CustomMotd extends JavaPlugin implements Listener, CommandExe
         reloadAll();
 
         getServer().getPluginManager().registerEvents(new ServerListPingEvent(this), this);
-        getCommand("motdreload").setExecutor(new Reload(this));
-        getCommand("maxplayers").setExecutor(new SetMaxPlayers(this));
+        getCommand("motd-reload").setExecutor(new Reload(this));
+        getCommand("max-players").setExecutor(new SetMaxPlayers(this));
 
     }
 
