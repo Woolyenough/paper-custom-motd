@@ -1,4 +1,4 @@
-Paper plugin for easily modifying the MOTD, player limit, and listed player info (message when hovering cursor over the player count). Compatible exclusively with Paper, utilising the modern `PaperServerListPingEvent` listener. Designed for simplicity.
+Paper plugin for easily modifying the MOTD, player limit, and listed player info (message when hovering cursor over the player count). Compatible exclusively with Paper, utilising the modern `PaperServerListPingEvent` listener. Designed for simplicity & tailored for the newest versions of the game.
 
 ## Commands & Permissions:
 - `/max-players <int>` (alias: `/set-max-players`) - set server player limit from in-game (also sets it in config)

@@ -1,7 +1,7 @@
 name: CustomMotd
 version: '${version}'
 main: wtf.wooly.custommotd.CustomMotd
-api-version: '1.20'
+api-version: '1.21'
 authors: [Woolyenough]
 website: https://modrinth.com/project/custom-motd
 
