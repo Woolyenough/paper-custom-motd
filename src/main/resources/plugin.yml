@@ -1,4 +1,4 @@
-name: CustomMotd
+name: CustomMOTD
 version: '${version}'
 main: wtf.wooly.custommotd.CustomMotd
 api-version: '1.21'
