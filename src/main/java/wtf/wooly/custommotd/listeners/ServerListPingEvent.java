@@ -23,7 +23,7 @@ public class ServerListPingEvent implements Listener {
         String line2 = this.plugin.getConfig().getString("motd.line2");
         event.motd(MiniMessage.miniMessage().deserialize(line1 + "<reset>\n" + line2));
 
-        event.setServerIcon(this.plugin.icon);
+        event.setServerIcon(this.plugin.getIcon());
 
         if(this.plugin.getConfig().getBoolean("enable_hover_message")){
             List<String> lines = this.plugin.getConfig().getStringList("player_hover_message");

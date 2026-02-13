@@ -3,22 +3,20 @@ package wtf.wooly.custommotd;
 import wtf.wooly.custommotd.commands.*;
 import wtf.wooly.custommotd.listeners.*;
 
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.CachedServerIcon;
 
 import java.io.File;
 
-public final class CustomMotd extends JavaPlugin implements Listener, CommandExecutor {
-    public CachedServerIcon icon;
+public final class CustomMotd extends JavaPlugin {
+    private CachedServerIcon icon;
     public static final String perms = "custommotd.admin";
     private static int vanillaMaxPlayers;
     @Override
     public void onEnable() {
         saveDefaultConfig();
 
-        if(!new File(getDataFolder(), "icon.png").exists())
+        if (!new File(getDataFolder(), "icon.png").exists())
             saveResource("icon.png", false);
 
         vanillaMaxPlayers = getServer().getMaxPlayers();
@@ -32,9 +30,12 @@ public final class CustomMotd extends JavaPlugin implements Listener, CommandExe
     }
 
     @Override
-    public void onDisable() {
-        // Plugin shutdown logic
+    public void onDisable() { }
+
+    public CachedServerIcon getIcon() {
+        return icon;
     }
+
     public void reloadAll(){
         reloadConfig();
 
