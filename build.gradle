@@ -38,7 +38,7 @@ processResources {
 }
 
 shadowJar {
-    archiveFileName = 'CustomMOTD-${version}.jar'
+    archiveFileName = "CustomMOTD-${version}.jar"
 }
 
 jar {
