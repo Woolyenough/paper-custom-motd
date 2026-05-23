@@ -6,4 +6,4 @@ Paper plugin for easily modifying the MOTD, player limit, and listed player info
 
 Both commands require the permission `custommotd.admin`.
 
-[Default config.yml](https://github.com/Woolyenough/paper-custom-motd/blob/latest/src/main/resources/config.yml)
+[Default config.yml](https://github.com/Woolyenough/paper-custom-motd/blob/main/src/main/resources/config.yml)
