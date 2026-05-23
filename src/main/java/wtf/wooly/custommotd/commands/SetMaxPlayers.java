@@ -2,36 +2,32 @@ package wtf.wooly.custommotd.commands;
 
 import wtf.wooly.custommotd.CustomMotd;
 
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
+import com.mojang.brigadier.Command;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.tree.LiteralCommandNode;
+import io.papermc.paper.command.brigadier.CommandSourceStack;
+import io.papermc.paper.command.brigadier.Commands;
 
-import org.jetbrains.annotations.NotNull;
-
-public class SetMaxPlayers implements CommandExecutor {
-    private final CustomMotd plugin;
-
-    public SetMaxPlayers(CustomMotd plugin) {
-        this.plugin = plugin;
+public final class SetMaxPlayers {
+    private SetMaxPlayers() {
     }
 
-    @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if (sender.hasPermission(CustomMotd.perms)) {
-            if (args.length != 1) {
-                sender.sendMessage("Usage: /max-players <number>");
-                return true;
-            }
-            try {
-                int num = Integer.parseInt(args[0]);
-                this.plugin.getConfig().set("max_players", num);
-                this.plugin.saveConfig();
-                this.plugin.getServer().setMaxPlayers(num);
-                sender.sendMessage("Max players set to " + num);
-            } catch (NumberFormatException e) {
-                sender.sendMessage("Invalid number.");
-            }
-        }
-        return true;
+    public static LiteralCommandNode<CommandSourceStack> node(CustomMotd plugin) {
+        return Commands.literal("max-players")
+                .requires(source -> source.getSender().hasPermission(CustomMotd.ADMIN_PERMISSION))
+                .then(Commands.argument("count", IntegerArgumentType.integer(0))
+                        .executes(ctx -> {
+                            int count = IntegerArgumentType.getInteger(ctx, "count");
+                            plugin.getConfig().set("max_players", count);
+                            plugin.saveConfig();
+                            plugin.getServer().setMaxPlayers(count);
+                            ctx.getSource().getSender().sendMessage("Max players set to " + count);
+                            return Command.SINGLE_SUCCESS;
+                        }))
+                .executes(ctx -> {
+                    ctx.getSource().getSender().sendMessage("Usage: /max-players <number>");
+                    return Command.SINGLE_SUCCESS;
+                })
+                .build();
     }
 }

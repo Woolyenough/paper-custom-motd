@@ -2,25 +2,23 @@ package wtf.wooly.custommotd.commands;
 
 import wtf.wooly.custommotd.CustomMotd;
 
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
+import com.mojang.brigadier.Command;
+import com.mojang.brigadier.tree.LiteralCommandNode;
+import io.papermc.paper.command.brigadier.CommandSourceStack;
+import io.papermc.paper.command.brigadier.Commands;
 
-import org.jetbrains.annotations.NotNull;
-
-public class Reload implements CommandExecutor {
-    private final CustomMotd plugin;
-
-    public Reload(CustomMotd plugin) {
-        this.plugin = plugin;
+public final class Reload {
+    private Reload() {
     }
 
-    @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if (sender.hasPermission(CustomMotd.perms)) {
-            this.plugin.getServer().getScheduler().runTask(this.plugin, this.plugin::reloadAll);
-            sender.sendMessage("Reloaded config.");
-        }
-        return true;
+    public static LiteralCommandNode<CommandSourceStack> node(CustomMotd plugin) {
+        return Commands.literal("motd-reload")
+                .requires(source -> source.getSender().hasPermission(CustomMotd.ADMIN_PERMISSION))
+                .executes(ctx -> {
+                    plugin.reloadAll();
+                    ctx.getSource().getSender().sendMessage("Reloaded config.");
+                    return Command.SINGLE_SUCCESS;
+                })
+                .build();
     }
 }

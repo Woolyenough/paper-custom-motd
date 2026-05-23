@@ -1,16 +1,11 @@
 name: CustomMOTD
 version: '${version}'
 main: wtf.wooly.custommotd.CustomMotd
-api-version: '1.21'
+api-version: '26.1.2'
 authors: [Woolyenough]
 website: https://modrinth.com/project/custom-motd
 
-commands:
-  motd-reload:
-    description: Reloads config and icon
-    permission: custommotd.admin
-  max-players:
-    aliases:
-      - set-max-players
-    description: Manually set max player limit for the server
-    permission: custommotd.admin
+permissions:
+  custommotd.admin:
+    description: Grants access to CustomMOTD admin commands
+    default: op
